@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import {GrandChildComp} from './GrandChildComp'
+import GrandChildComp from './GrandChildComp'
 
 const ChildComp = () => {
     const [count, setCount]= useState(0)
@@ -20,12 +20,13 @@ const ChildComp = () => {
         }
         return count;
     }
+    const calc = expensiveCal(count)
     console.log('Child Component rendered')
   return (
     <div style={style}>
         <div>  
         <h4 style={{fontWeight: '900', color: '#f2f2f2'}}> Child Component </h4>
-        <h5> Child Count : {count}  | result : {expensiveCal} </h5>
+        <h5> Child Count : {count}  | result : {calc} </h5>
          <button onClick={()=> setCount((prev)=> prev+=1)}> Child Count +</button>
         </div>
         <GrandChildComp />

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ParentComp } from "./Component/ParentComp";
+import ParentComp from "./Component/ParentComp";
 
 function App() {
   const [toggle, setToggle] = useState(false)

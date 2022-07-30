@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import {ChildComp} from './ChildComp'
+import ChildComp from './ChildComp'
 
 const ParentComp = () => {
     const [count, setCount]= useState(0)
@@ -20,12 +20,12 @@ const ParentComp = () => {
         }
         return count;
     }
-
+    const calc = expensiveCal(count)
     console.log('Parent Component rendered')
   return (
     <div style={style}><div>
           <h4 style={{fontWeight: '900' }}> Parent Component </h4>
-        <h5 style={{fontWeight: '900'}}> Parent Count : {count}  | result : {expensiveCal} </h5>
+        <h5 style={{fontWeight: '900'}}> Parent Count : {count}  | result : {calc} </h5>
          <button onClick={()=> setCount((prev)=> prev+=1)}> Parent Count +</button>
          </div>
          <ChildComp />

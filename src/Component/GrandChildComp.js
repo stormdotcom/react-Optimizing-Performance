@@ -19,10 +19,11 @@ const GrandChildComp = () => {
         }
         return count;
     }
+    const calc = expensiveCal(count)
     console.log('Grand Child Component rendered')
   return (
     <div style={style}> <h5 style={{fontWeight: '900', color: 'white'}}>Grand Child Component </h5>
-            <h5  style={{fontWeight: '900', color: 'white'}}>Grand Child Count : {count}  | result : {expensiveCal} </h5>
+            <h5  style={{fontWeight: '900', color: 'white'}}>Grand Child Count : {count}  | result : {calc} </h5>
          <button onClick={()=> setCount((prev)=> prev+=1)}> Grand Child Count +</button>
     </div>
   )
