@@ -1,7 +1,7 @@
-import { useState, memo } from "react";
+import { useState } from "react";
 import { ParentComp } from "./Component/ParentComp";
 
-function AppComp() {
+function App() {
   const [toggle, setToggle] = useState(false)
   const style = {
     display: 'flex',
@@ -17,10 +17,10 @@ console.log('Index Component rendered')
   return (
     <div style={style}>
       <h4 style={{fontWeight: '900' }}> Index Component </h4>
-      <ParentComp />
-      {/* {toggle && <ParentComp />} */}
+      {/* <ParentComp /> */}
+      {toggle && <ParentComp />}
       <button onClick={()=> setToggle((prev) => !prev)}>Toggle View </button>
     </div>
   );
 }
-export const  App = memo(AppComp);
+export default App;

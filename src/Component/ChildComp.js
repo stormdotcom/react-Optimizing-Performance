@@ -1,10 +1,9 @@
-import React, { useMemo, useState} from 'react'
+import React, { useState} from 'react'
 import {GrandChildComp} from './GrandChildComp'
 
-const ChildComponent = () => {
+const ChildComp = () => {
     const [count, setCount]= useState(0)
-    const style = useMemo(()=> {
-        return {
+    const style =  {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -14,21 +13,19 @@ const ChildComponent = () => {
         border: '1px solid black',
         backgroundColor: '#ba65b9'
         }
-    }, [])
-    const expensiveCal =   (count)=>{ 
+    const expensiveCal =   (count=1)=>{ 
       console.log('Child`s expensiveCalculation invoked ')
         for(let i =0; i< 1000000000; i++){
            count +=1;
         }
         return count;
     }
-    const calc = useMemo(()=> expensiveCal(count), []) 
     console.log('Child Component rendered')
   return (
     <div style={style}>
         <div>  
         <h4 style={{fontWeight: '900', color: '#f2f2f2'}}> Child Component </h4>
-        <h5> Child Count : {count}  | result : {calc} </h5>
+        <h5> Child Count : {count}  | result : {expensiveCal} </h5>
          <button onClick={()=> setCount((prev)=> prev+=1)}> Child Count +</button>
         </div>
         <GrandChildComp />
@@ -39,4 +36,4 @@ const ChildComponent = () => {
   )
 }
 
-export const ChildComp =  React.memo(ChildComponent)
+export default ChildComp;
