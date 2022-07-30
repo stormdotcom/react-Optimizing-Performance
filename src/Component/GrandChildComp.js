@@ -1,6 +1,6 @@
 import React, {useMemo, useState} from 'react'
 
-const GrandChildComp = () => {
+const GrandChildComponent = () => {
     const [count, setCount]= useState(0)
     const style = useMemo(()=> {
         return {
@@ -11,23 +11,24 @@ const GrandChildComp = () => {
         width: '85%',
         height:'55%',
         border: '1px solid black',
-        backgroundColor: '#508c5f'
+        backgroundColor: '#993698'
         }
     }, [])
-    const expensiveCal = ()=> {
-        for(let i =0; i< 100000000; i++){
-
-        
+    const expensiveCal =   (count)=>{ 
+      console.log('Grand`s expensiveCalculation invoked  called')
+        for(let i =0; i< 1000000000; i++){
+           count +=1;
         }
+        return count;
     }
-    expensiveCal()
+   const calc = useMemo(()=> expensiveCal(count), [])
     console.log('Grand Child Component rendered')
   return (
     <div style={style}> <h5 style={{fontWeight: '900', color: 'white'}}>Grand Child Component </h5>
-            <h5  style={{fontWeight: '900', color: 'white'}}>Grand Child Count : {count}</h5>
+            <h5  style={{fontWeight: '900', color: 'white'}}>Grand Child Count : {count}  | result : {calc || 1} </h5>
          <button onClick={()=> setCount((prev)=> prev+=1)}> Grand Child Count +</button>
     </div>
   )
 }
 
-export default GrandChildComp
+export const GrandChildComp = React.memo(GrandChildComponent)
